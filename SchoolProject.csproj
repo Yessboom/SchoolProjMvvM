@@ -1,0 +1,160 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+
+		<!-- Note for MacCatalyst:
+		The default runtime is maccatalyst-x64, except in Release config, in which case the default is maccatalyst-x64;maccatalyst-arm64.
+		When specifying both architectures, use the plural <RuntimeIdentifiers> instead of the singular <RuntimeIdentifier>.
+		The Mac App Store will NOT accept apps with ONLY maccatalyst-arm64 indicated;
+		either BOTH runtimes must be indicated or ONLY macatalyst-x64. -->
+		<!-- For example: <RuntimeIdentifiers>maccatalyst-x64;maccatalyst-arm64</RuntimeIdentifiers> -->
+
+		<OutputType>Exe</OutputType>
+		<RootNamespace>SchoolProject</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<!-- Display name -->
+		<ApplicationTitle>SchoolProject</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.companyname.schoolproject</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\Roboto-Bold.ttf" />
+	  <None Remove="Resources\Fonts\Roboto-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Rubik-Bold.ttf" />
+	  <None Remove="Resources\Fonts\Rubik-Regular.ttf" />
+	  <None Remove="Resources\Images\backdropadmin.png" />
+	  <None Remove="Resources\Images\background.png" />
+	  <None Remove="Resources\Images\barcode.png" />
+	  <None Remove="Resources\Images\biomimicty.png" />
+	  <None Remove="Resources\Images\cashin.png" />
+	  <None Remove="Resources\Images\cashout.png" />
+	  <None Remove="Resources\Images\creativecomputing.png" />
+	  <None Remove="Resources\Images\creditsiconsubjects.png" />
+	  <None Remove="Resources\Images\dashboardicon.png" />
+	  <None Remove="Resources\Images\deleteicon.png" />
+	  <None Remove="Resources\Images\designmajor.png" />
+	  <None Remove="Resources\Images\designsystems.png" />
+	  <None Remove="Resources\Images\devmajor.png" />
+	  <None Remove="Resources\Images\dotsicon.png" />
+	  <None Remove="Resources\Images\filmtheory.png" />
+	  <None Remove="Resources\Images\fundscards.png" />
+	  <None Remove="Resources\Images\fundsicon.png" />
+	  <None Remove="Resources\Images\hoursiconsubjects.png" />
+	  <None Remove="Resources\Images\informationarchitecture.png" />
+	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\meanstack.png" />
+	  <None Remove="Resources\Images\mobiledevelopment.png" />
+	  <None Remove="Resources\Images\navbarbackground.png" />
+	  <None Remove="Resources\Images\pencilicon.png" />
+	  <None Remove="Resources\Images\presentation.png" />
+	  <None Remove="Resources\Images\priceiconsubjects.png" />
+	  <None Remove="Resources\Images\profilepic.png" />
+	  <None Remove="Resources\Images\profilepicfour.png" />
+	  <None Remove="Resources\Images\profilepicthree.png" />
+	  <None Remove="Resources\Images\profilepictwo.png" />
+	  <None Remove="Resources\Images\searchicon.png" />
+	  <None Remove="Resources\Images\smartchip.png" />
+	  <None Remove="Resources\Images\studenticon.png" />
+	  <None Remove="Resources\Images\subjectcardslarge.png" />
+	  <None Remove="Resources\Images\subjecticon.png" />
+	  <None Remove="Resources\Images\teachericon.png" />
+	  <None Remove="Resources\Images\threedmajor.png" />
+	  <None Remove="Resources\Images\threedmodeling.png" />
+	  <None Remove="Resources\Images\timeiconsubjects.png" />
+	  <None Remove="Resources\Images\vctheory.png" />
+	  <None Remove="Resources\Images\venueiconsubjects.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+		<PackageReference Include="LiveCharts.Wpf" Version="0.9.7" />
+		<PackageReference Include="LiveChartsCore.SkiaSharpView" Version="2.0.0-rc2" />
+		<PackageReference Include="LiveChartsCore.SkiaSharpView.Maui" Version="2.0.0-rc2" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+		<PackageReference Include="SkiaSharp.Views" Version="2.88.7" />
+		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="2.88.7" />
+		<PackageReference Include="sqlite-net-sqlcipher" Version="1.8.116" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.7" />
+		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.7" />
+		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.7" />
+		<PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.7" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Views\AddUpdateViews\AddUpdateGradePage.xaml.cs">
+	    <DependentUpon>AddUpdateGradePage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Components\Navbar.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AddUpdateViews\AddUpdateStudentPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AddUpdateViews\AddUpdateSubjectPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AddUpdateViews\AddUpdateTeacherPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\AddUpdateViews\AddUpdateGradePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\DashboardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\NewPage1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\StudentsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\SubjectsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\TeachersPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+</Project>

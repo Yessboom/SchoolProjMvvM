@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SchoolProject.Views.SubjectsPage"
+             xmlns:mynamespace="clr-namespace:SchoolProject"
+             xmlns:handless="clr-namespace:SchoolProject.Handlers"
+             xmlns:viewModels="clr-namespace:SchoolProject.ViewModels"
+             xmlns:viewModel="clr-namespace:SchoolProject.ViewModels.AddUpdateViewModels"
+             x:DataType="viewModels:SubjectViewModel"
+             xmlns:models="clr-namespace:SchoolProject.Models"
+             BackgroundColor="#FFFFFF">
+
+    <Grid>
+        <!--New Grid Definitions-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="5.5*"/>
+        </Grid.ColumnDefinitions>
+        <!--Navbar-->
+        <mynamespace:Navbar/>
+
+
+        <!--Main Container-->
+        <Frame Grid.Column="1"
+               BackgroundColor="Transparent"
+               BorderColor="Transparent">
+            <Grid ColumnSpacing="30" RowSpacing="30">
+                <!--New Grid Definitions-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2.5*"/>
+                </Grid.RowDefinitions>
+
+                <!--Grid Content-->
+                <Frame  Grid.Row="0" 
+                        BackgroundColor="Transparent"
+                        BorderColor="Transparent"
+                        CornerRadius="0" 
+                        Margin="0,0,-20,0" >
+                    <FlexLayout Direction="Column"
+                                AlignItems="End"
+                                JustifyContent="SpaceBetween"
+                                BackgroundColor="Transparent">
+                        <StackLayout BackgroundColor="Transparent">
+                            <Border Padding="8"
+                                    Stroke="Transparent"
+                                    Background="#FC6923"
+                                    HorizontalOptions="End"
+                                    Margin="0,0,-20,0"
+                                    WidthRequest="1200" >
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="40,5,40,5"/>
+                                </Border.StrokeShape>
+                                <Border.Shadow>
+                                    <Shadow Brush="Black"
+                                            Offset="10,10"
+                                            Radius="20" 
+                                            Opacity="0.3" />
+                                </Border.Shadow>
+                                <HorizontalStackLayout>
+                                    <Image Source="searchicon.png"
+                                           WidthRequest="30"
+                                           HeightRequest="30" 
+                                           HorizontalOptions="Start"
+                                           Margin="10"/>
+                                    <handless:BordlessEntry Text="{Binding Search}"
+                                                              Placeholder="Search Subjects by Name or ID"
+                                                              PlaceholderColor="Black" 
+                                                              FontSize="16" 
+                                                              FontFamily="Roboto-Regular"
+                                                              BackgroundColor="Transparent"
+                                                              WidthRequest="1030"
+                                                              VerticalOptions="Center"
+                                                              Margin="0,5,0,0" />
+                                    <!-- Search Subject Button -->
+                                    <Button Command="{Binding GetSubjectListSearchCommand}"
+                                            Text="Search"
+                                            TextColor="White"
+                                            FontAttributes="Bold"
+                                            FontFamily="Roboto-Regular"
+                                            FontSize="20"
+                                            BackgroundColor="#29233E"
+                                            Padding="15"
+                                            HorizontalOptions="End"/>
+                                </HorizontalStackLayout>
+                            </Border>
+                        </StackLayout>
+                        <FlexLayout Direction="Row"
+                                    AlignItems="End"
+                                    JustifyContent="SpaceBetween"
+                                    BackgroundColor="Blue">
+                            <Label  Text="Subjects"
+                                    TextColor="#29233E"
+                                    FontSize="48"
+                                    FontAttributes="Bold"
+                                    FontFamily="Roboto-Bold"
+                                    Margin="0,0,0,0"/>
+                            <!--Navigate to Add/Update Subject Screen Button-->
+                            <Button Command="{Binding AddUpdateSubjectCommand}"
+                                    Text="+ Add Subject"
+                                    CornerRadius="30"
+                                    TextColor="White"
+                                    FontAttributes="Bold"
+                                    FontFamily="Roboto-Regular"
+                                    FontSize="20"
+                                    BackgroundColor="#FFBC24"
+                                    Padding="15"
+                                    HorizontalOptions="End"  />
+                        </FlexLayout>
+                    </FlexLayout>
+
+                </Frame>
+
+                <Frame Grid.Row="1"
+                       BorderColor="White"
+                       BackgroundColor="White"
+                       CornerRadius="0" >
+                    <!-- Collection View | Subject Cards -->
+                    <CollectionView ItemsSource="{Binding Subjects}" >
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:SubjectModel">
+
+                                <HorizontalStackLayout>
+                                    <!-- SubjectCards Starts Here -->
+                                    <VerticalStackLayout BackgroundColor="Transparent"
+                                                     WidthRequest="350" 
+                                                     Margin="20,20,20,20">
+                                        <!-- Top Section -->
+
+                                        <!-- Profile Image Border Rectangle -->
+
+
+                                        <Frame BackgroundColor="#070411" 
+                                           HeightRequest="100"
+                                           CornerRadius="10" >
+                                            <StackLayout Orientation="Horizontal">
+
+                                                <!-- Profile Details -->
+                                                <VerticalStackLayout Margin="5,10,5,10"
+                                                                 HorizontalOptions="Start">
+                                                    <HorizontalStackLayout>
+                                                        <Label
+                                                            Text="Nom du cours" 
+                                                           FontSize="20"
+                                                           FontFamily="Roboto-Regular"
+                                                           TextColor="White"
+                                                           FontAttributes="Bold"
+                                                           Margin="25,-20,0,0"/>
+                                                        <Label
+                                                           Text="{Binding SubjectTitle}" 
+                                                           FontSize="20"
+                                                           FontFamily="Roboto-Regular"
+                                                           TextColor="White"
+                                                           FontAttributes="Bold"
+                                                           Margin="0,00,0,0"/>
+                                                        </HorizontalStackLayout>
+
+                                                </VerticalStackLayout>
+                                                <!-- Profile ID & Action Buttons -->
+                                                <VerticalStackLayout BackgroundColor="Transparent"
+                                                                 HorizontalOptions="EndAndExpand">
+
+                                                    <HorizontalStackLayout Spacing="5"
+                                                                       HorizontalOptions="EndAndExpand"
+                                                                       VerticalOptions="EndAndExpand"
+                                                                       Margin="0,35,20,0">
+                                                        <!-- Buttons -->
+                                                        <ImageButton Margin="0,0,0,0"
+                                                                 Source="dotsicon.png"
+                                                                 HeightRequest="20"
+                                                                 WidthRequest="20"
+                                                                 BackgroundColor="#5D3AF3"
+                                                                 Padding="3" 
+                                                                 CornerRadius="1"
+                                                                 Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModels:SubjectViewModel}}, Path=DisplayActionCommand}" CommandParameter="{Binding .}"/>
+                                                    </HorizontalStackLayout>
+                                                </VerticalStackLayout>
+                                            </StackLayout>
+                                        </Frame>
+
+
+                                        <Border
+                                            Padding="0"
+                                            Stroke="#070411"
+                                            Background="White"
+                                        StrokeThickness="3"
+                                            HorizontalOptions="FillAndExpand"
+                                            ZIndex="2"
+                                        Margin="0,-20,0,0">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="10,10,10,10"/>
+                                            </Border.StrokeShape>
+                                            <!-- Bottom Section -->
+                                            <StackLayout Orientation="Horizontal"
+                                                     BackgroundColor="White"
+                                                     HeightRequest="120">
+                                                <!-- Blocks Section -->
+                                                <Grid ColumnSpacing="10" RowSpacing="10" Margin="10">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*"/>
+                                                        <RowDefinition Height="*"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="110"/>
+                                                        <ColumnDefinition Width="110"/>
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <!-- Top Left -->
+                                                    <Border StrokeThickness="2"
+                                                        Stroke="#FC6923"
+                                                        Grid.Row="0"
+                                                        Grid.Column="0">
+                                                        <Border.StrokeShape>
+                                                            <RoundRectangle CornerRadius="8"/>
+                                                        </Border.StrokeShape>
+
+                                                        <VerticalStackLayout VerticalOptions="Center" 
+                                                                         HorizontalOptions="Center">
+                                                            <Label Text="Code du Cours"
+                                                               FontSize="9"
+                                                               FontFamily="Roboto-Regular"
+                                                               FontAutoScalingEnabled="True"
+                                                               TextColor="Black"
+                                                               VerticalTextAlignment="Center"
+                                                               HorizontalTextAlignment="Center"/>
+                                                            <Label Text="{Binding SubjectCode}"
+                                                               FontSize="14"
+                                                               FontFamily="Roboto-Regular"
+                                                               FontAutoScalingEnabled="True"
+                                                               TextColor="Black"
+                                                               VerticalTextAlignment="Center"
+                                                               HorizontalTextAlignment="Center"/>
+                                                        </VerticalStackLayout>
+                                                    </Border>
+                                                    <!-- Top Right -->
+                                                    <Border StrokeThickness="2" 
+                                                        Stroke="Green"
+                                                        Grid.Row="0"
+                                                        Grid.Column="1">
+                                                        <Border.StrokeShape>
+                                                            <RoundRectangle CornerRadius="8"/>
+                                                        </Border.StrokeShape>
+
+                                                        <VerticalStackLayout VerticalOptions="Center" 
+                                                                         HorizontalOptions="Center">
+                                                            <Label Text="Credits ECTS"
+                                                               FontSize="9"
+                                                               FontFamily="Roboto-Regular"
+                                                               FontAutoScalingEnabled="True"
+                                                               TextColor="Black"
+                                                               VerticalTextAlignment="Center"
+                                                               HorizontalTextAlignment="Center"/>
+                                                            <Label Text="{Binding SubjectCredits}"
+                                                               FontSize="14"
+                                                               FontFamily="Roboto-Regular"
+                                                               FontAutoScalingEnabled="True"
+                                                               TextColor="Black"
+                                                               VerticalTextAlignment="Center"
+                                                               HorizontalTextAlignment="Center"/>
+                                                        </VerticalStackLayout>
+                                                    </Border>
+                                                    <Border StrokeThickness="2" 
+                                                        Stroke="Blue"
+                                                        Grid.Row="1"
+                                                        Grid.Column="0">
+                                                        <Border.StrokeShape>
+                                                            <RoundRectangle CornerRadius="8"/>
+                                                        </Border.StrokeShape>
+
+                                                        <VerticalStackLayout VerticalOptions="Center" 
+                                                                         HorizontalOptions="Center">
+                                                            <Label Text="Credits ECTS"
+                                                               FontSize="9"
+                                                               FontFamily="Roboto-Regular"
+                                                               FontAutoScalingEnabled="True"
+                                                               TextColor="Black"
+                                                               VerticalTextAlignment="Center"
+                                                               HorizontalTextAlignment="Center"/>
+                                                            <Label Text="{Binding SubjectLecturer}"
+                                                               FontSize="14"
+                                                               FontFamily="Roboto-Regular"
+                                                               FontAutoScalingEnabled="True"
+                                                               TextColor="Black"
+                                                               VerticalTextAlignment="Center"
+                                                               HorizontalTextAlignment="Center"/>
+                                                        </VerticalStackLayout>
+                                                    </Border>
+
+
+
+                                                </Grid>
+
+
+                                            </StackLayout>
+                                        </Border>
+
+                                    </VerticalStackLayout>
+                                    <!-- Subject Cards End Here -->
+
+
+                                    <!-- Subject Cards End Here -->
+                                </HorizontalStackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </Frame>
+            </Grid>
+        </Frame>
+    </Grid>
+</ContentPage>
+
+
+

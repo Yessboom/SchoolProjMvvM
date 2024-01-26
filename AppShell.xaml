@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="SchoolProject.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SchoolProject"
+    xmlns:views="clr-namespace:SchoolProject.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Title="SchoolProject">
+
+    <!--<ShellContent -->
+        <!--ContentTemplate="{DataTemplate local:MainPage}"
+        Route="MainPage" /> -->
+    <!--Login Page-->
+    <ShellContent
+        ContentTemplate="{DataTemplate views:DashboardPage}"
+        Route="DashboardPage" />
+    <!--Main page / Dashboard-->
+    <ShellContent
+        ContentTemplate="{DataTemplate views:TeachersPage}"
+        Route="TeachersPage" />
+    <!--teacher page / teachers page-->
+    <ShellContent
+        ContentTemplate="{DataTemplate views:StudentsPage}"
+        Route="StudentsPage" />
+    <!-- students page-->
+    <ShellContent
+        ContentTemplate="{DataTemplate views:SubjectsPage}"
+        Route="SubjectsPage" />
+    <!--subjects page-->
+
+
+</Shell>
