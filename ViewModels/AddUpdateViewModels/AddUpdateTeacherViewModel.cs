@@ -88,9 +88,6 @@ namespace SchoolProject.ViewModels.AddUpdateViewModels
                 {
                     TeacherFirstName = TeacherDetail.TeacherFirstName,
                     TeacherLastName = TeacherDetail.TeacherLastName,
-                    //Load TeacherImage from
-                    //and set correct path
-                    //Load Hours and calculate Salary from it / and if Admin then fixed salary
                     TeacherSalary = TeacherDetail.TeacherSalary,
                 });
             }

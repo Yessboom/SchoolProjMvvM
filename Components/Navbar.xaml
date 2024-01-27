@@ -11,9 +11,9 @@
             <!--Logo-->
             <HorizontalStackLayout ZIndex="2" HorizontalOptions="Center" Margin="-45,50,0,0">
                 <Label Text="E" TextColor="#5D3AF3" FontFamily="Rubik-Bold" FontSize="30" ></Label>
-                <Label Text="du" TextColor="White"  FontFamily="Rubik-Bold" FontSize="30"></Label>
-                <Label Text="C" TextColor="#FC6923" FontFamily="Rubik-Bold" FontSize="30"></Label>
-                <Label Text="ube" TextColor="White" FontFamily="Rubik-Bold" FontSize="30"></Label>
+                <Label Text="C" TextColor="White"  FontFamily="Rubik-Bold" FontSize="30"></Label>
+                <Label Text="A" TextColor="#FC6923" FontFamily="Rubik-Bold" FontSize="30"></Label>
+                <Label Text="M" TextColor="White" FontFamily="Rubik-Bold" FontSize="30"></Label>
             </HorizontalStackLayout>
             <!--Dashboard navigation link-->
             <HorizontalStackLayout ZIndex="2"
@@ -95,8 +95,6 @@
 
         </VerticalStackLayout>
         <!--End of navLink container-->
-
-        <!--Logout Button-->
 
         <!--End of main container-->
     </Grid>

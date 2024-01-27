@@ -24,9 +24,6 @@ namespace SchoolProject.ViewModels
             _teacherRepository = teacherService;
         }
 
-        //count total admin
-        [ObservableProperty]
-        int totalAdmin;
         //count total lecturers
         [ObservableProperty]
         int totalLecturers;
@@ -49,8 +46,7 @@ namespace SchoolProject.ViewModels
                 {
                     //populate list of teacher
                     Teacher.Add(teacher);
-                    //count total admin vs lecturers
-                    System.Diagnostics.Debug.WriteLine("Test");
+
 
 
 

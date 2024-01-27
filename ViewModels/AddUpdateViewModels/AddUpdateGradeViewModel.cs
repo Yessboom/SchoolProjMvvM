@@ -111,8 +111,6 @@ namespace SchoolProject.ViewModels.AddUpdateViewModels
                 {
                     GradeStudentID = SelectedStudent.StudentID.ToString(),
                     GradeSubjectID = SelectedSubject.SubjectID.ToString(),
-                    //Load GradeImage from picker and set correct path
-                    //Load Hours and calculate Salary from it / and if Admin then fixed salary
                     GradeLetter = GradeDetail.GradeLetter,
                     Gradenum = GradeDetail.Gradenum,
                 });
