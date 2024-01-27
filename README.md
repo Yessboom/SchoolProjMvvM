@@ -67,3 +67,14 @@ lorsqu'il y a des changements
 ![Diagramme de Séquence][image2]
 
 
+
+
+
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[image1]: Images/Image1.png
+[image2]: Images/Image2.png
+
