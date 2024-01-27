@@ -8,8 +8,9 @@ namespace SchoolProject
         public static ITeacherService TeacherRepo { get; private set; }
         public static IStudentService StudentRepo { get; private set; }
         public static ISubjectService SubjectRepo { get; private set; }
+        public static IGradeService GradeRepo {get; private set;}
 
-        public App(ITeacherService teacherRepo, IStudentService studentRepo, ISubjectService subjectRepo)
+        public App(ITeacherService teacherRepo, IStudentService studentRepo, ISubjectService subjectRepo, IGradeService gradeRepo)
         {
             InitializeComponent();
             //borderless entry code for Windows machines
@@ -26,6 +27,7 @@ namespace SchoolProject
             TeacherRepo = teacherRepo;
             StudentRepo = studentRepo;
             SubjectRepo = subjectRepo;
+            GradeRepo = gradeRepo;
         }
     }
 }

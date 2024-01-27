@@ -32,20 +32,8 @@ public partial class Navbar : ContentView
 
         await Shell.Current.GoToAsync("//SubjectsPage");
     }
-    //OnCLick Navigate to FundsPage
-    private async void fundspageroute(object sender, EventArgs e)
-    {
 
-        await Shell.Current.GoToAsync("//FundsPage");
-    }
-    //OnCLick Logout 
-    private async void logoutroute(object sender, EventArgs e)
-    {
 
-        await Shell.Current.GoToAsync("//MainPage");
-        //Set prefrences to false to avoid automatic login when app is launched
-        Preferences.Set("StayLoggedOn", false);
-    }
 
 
 

@@ -54,5 +54,15 @@ namespace SchoolProject.Services
             await SetUpDb();
             return await _dbConnection.DeleteAsync(studentModel);
         }
+
+        public async Task<List<GradeModel>> GetGradesForStudent(int studentId)
+        {
+        await SetUpDb();
+        
+        // Fetch grades for the specified student from the database
+        var gradesForStudent = await _dbConnection.Table<GradeModel>().Where(grade => grade.GradeStudentID == studentId.ToString()).ToListAsync();
+
+        return gradesForStudent;
+        }
     }
 }

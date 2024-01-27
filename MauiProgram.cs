@@ -64,7 +64,6 @@ namespace SchoolProject
             builder.Services.AddTransient<AddUpdateSubjectViewModel>();
 
             builder.Services.AddTransient<AddUpdateGradeViewModel>();
-            builder.Services.AddSingleton<LoginViewModel>();
 
 
             return builder.Build();

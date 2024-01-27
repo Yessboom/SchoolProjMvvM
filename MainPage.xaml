@@ -4,77 +4,10 @@
              x:Class="SchoolProject.MainPage"
              xmlns:mynamespace="clr-namespace:SchoolProject"
              xmlns:viewmodel="clr-namespace:SchoolProject.ViewModels"
-             x:DataType="viewmodel:LoginViewModel"
+             x:DataType="viewmodel:TeacherViewModel"
              NavigationPage.HasBackButton="False">
 
 
     <ContentPage.Content>
-        <!--Login Page-->
-        <Grid>
-            <!-- Grid Definitions -->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="400"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-
-            <!-- Background Image -->
-            <Frame Grid.RowSpan="3" Grid.ColumnSpan="3" BackgroundColor="Transparent">
-                <Image Source="background.png" Aspect="AspectFill" Scale="1" Margin="-20,-20,-20,-20"/>
-            </Frame>
-
-
-
-            <Frame Grid.Column="1" Grid.Row="0" CornerRadius="20" BackgroundColor="#FFFFFF" Opacity="0.3" MaximumHeightRequest="500" BorderColor="Transparent" Margin="0,-40,0,0"/>
-            <Frame Grid.Column="1" Grid.Row="0" CornerRadius="20" BackgroundColor="Transparent" MaximumHeightRequest="500"  BorderColor="Transparent">
-
-                <VerticalStackLayout Grid.Column="1" BackgroundColor="Transparent">
-                    <Image Source="logo.png" WidthRequest="90">
-                        <Image.Shadow>
-                            <Shadow Brush="Black" Offset="1,2" Radius="5" Opacity="0.2"/>
-                        </Image.Shadow>
-                    </Image>
-                    <Label Text="EduCube" HorizontalOptions="Center" FontSize="24" FontAttributes="Bold" TextColor="White" FontFamily="Rubik-Regular" Margin="0,0,0,20"></Label>
-                    <VerticalStackLayout Spacing="5">
-                        <Label Text="Email" FontSize="16" FontAttributes="Bold" TextColor="#FFFFFF" Margin="10,0,0,0"/>
-                        <Border Stroke="White" StrokeThickness="1.5" Background="Transparent">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="40,40,40,40"/>
-                            </Border.StrokeShape>
-                            <Entry Text="{Binding Email}"  FontSize="12" TextColor="White" FontAutoScalingEnabled="True" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                        </Border>
-
-                        <Label Text="Password" FontSize="16" FontAttributes="Bold" TextColor="#FFFFFF" Margin="10,10,0,0"/>
-                        <Border Stroke="White" StrokeThickness="1.5" Background="Transparent">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="40,40,40,40"/>
-                            </Border.StrokeShape>
-                            <Entry Text="{Binding Password}" IsPassword="True" Keyboard="Text" FontSize="12" TextColor="White" FontAutoScalingEnabled="True" HorizontalTextAlignment="Start" VerticalTextAlignment="Center"/>
-                        </Border>
-                    </VerticalStackLayout>
-
-                    <VerticalStackLayout Spacing="5">
-
-                        <HorizontalStackLayout HorizontalOptions="Fill" VerticalOptions="Center" Spacing="180">
-                            <Label Text="Stay Logged In" HorizontalOptions="Start" Margin="0,10,0,0" TextColor="White"/>
-                            <Switch IsToggled="{Binding StayLoggedOn}" OnColor="#FC6923" ThumbColor="#FFBC24" HorizontalOptions="EndAndExpand"/>
-
-
-                        </HorizontalStackLayout>
-                        <!--Error Message -->
-                        <Label Text="{Binding ErrorMessage, Mode=TwoWay}" TextColor="Red" HorizontalOptions="Center" Margin="0,20,0,0"/>
-
-
-                        <!--Sign In Button-->
-
-
-                    </VerticalStackLayout>
-
-                </VerticalStackLayout>
-            </Frame>
-        </Grid>
     </ContentPage.Content>
 </ContentPage>

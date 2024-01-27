@@ -18,5 +18,8 @@ namespace SchoolProject.Services
         Task<int> EditStudent(StudentModel studentModel);
         //Delete student
         Task<int> DeleteStudent(StudentModel studentModel);
+
+        Task<List<GradeModel>> GetGradesForStudent(int studentId);
+
     }
 }

@@ -8,10 +8,7 @@
     Shell.FlyoutBehavior="Disabled"
     Title="SchoolProject">
 
-    <!--<ShellContent -->
-        <!--ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" /> -->
-    <!--Login Page-->
+
     <ShellContent
         ContentTemplate="{DataTemplate views:DashboardPage}"
         Route="DashboardPage" />

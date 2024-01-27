@@ -18,7 +18,6 @@ namespace SchoolProject.Services
         Task<int> EditGrade(GradeModel gradeModel);
         //Delete grade
         Task<int> DeleteGrade(GradeModel gradeModel);
-        //Get user login authentication
 
     }
 }

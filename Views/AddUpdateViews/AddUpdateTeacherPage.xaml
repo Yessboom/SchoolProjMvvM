@@ -78,7 +78,7 @@
                                         <Entry Text="{Binding TeacherDetail.TeacherFirstName}" 
                                                FontFamily="Monserrat-Regular"
                                                TextColor="White" 
-                                               MinimumWidthRequest="270"
+                                               MinimumWidthRequest="170"
                                                HeightRequest="10" 
                                                FontSize="12"></Entry>
                                     </Border>
@@ -104,7 +104,7 @@
                                         <Entry Text="{Binding TeacherDetail.TeacherLastName}" 
                                                FontFamily="Monserrat-Regular"
                                                TextColor="White"
-                                               MinimumWidthRequest="270" ></Entry>
+                                               MinimumWidthRequest="170" ></Entry>
                                     </Border>
                                 </VerticalStackLayout>
                             </HorizontalStackLayout>
@@ -155,7 +155,7 @@
                                         <Entry Text="{Binding TeacherDetail.TeacherSalary}"
                                                FontFamily="Monserrat-Regular"
                                                TextColor="White"
-                                               MinimumWidthRequest="270"></Entry>
+                                               MinimumWidthRequest="170"></Entry>
                                     </Border>
                                 </VerticalStackLayout>
                             </HorizontalStackLayout>

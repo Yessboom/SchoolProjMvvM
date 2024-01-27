@@ -17,7 +17,13 @@ namespace SchoolProject.ViewModels
     {
         //Observable collection to populate frontend with list of students
         public ObservableCollection<StudentModel> Students { get; set; } = new ObservableCollection<StudentModel>();
-
+        private ObservableCollection<StudentWithGradesModel> _studentsWithGrades;
+        
+        public ObservableCollection<StudentWithGradesModel> StudentsWithGrades
+        {
+            get { return _studentsWithGrades; }
+            set { SetProperty(ref _studentsWithGrades, value); }
+        }
         //Initialize Interface for CRUD functions
         private readonly IStudentService _studentRepository;
         public StudentViewModel(IStudentService studentService)
@@ -27,12 +33,7 @@ namespace SchoolProject.ViewModels
         }
 
 
-        //count total degree students
-        [ObservableProperty]
-        int totalDegree;
-        //count total diploma students
-        [ObservableProperty]
-        int totalDiploma;
+
 
         //observe entry on frontend for keywords to search
         [ObservableProperty]
@@ -52,13 +53,30 @@ namespace SchoolProject.ViewModels
                 //loop through list
                 foreach (var student in studentList)
                 {
-                    //populate list with students
                     Students.Add(student);
-                    //count total degree vs diploma students
 
                 }
             }
         }
+
+        public async void GetStudentSubjetsGrades()
+        {
+            var studentList = await _studentRepository.GetStudentList();
+            StudentsWithGrades = new ObservableCollection<StudentWithGradesModel>();
+
+            foreach (var student in studentList)
+            {
+                var gradesForStudent = await _studentRepository.GetGradesForStudent(student.StudentID);
+                var studentWithGrades = new StudentWithGradesModel
+                {
+                    Student = student,
+                    Grades = new ObservableCollection<GradeModel>(gradesForStudent)
+                };
+
+                StudentsWithGrades.Add(studentWithGrades);
+            }
+        }
+
 
         //Search funtionality
         [ICommand]

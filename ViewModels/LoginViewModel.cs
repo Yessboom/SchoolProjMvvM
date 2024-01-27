@@ -43,8 +43,5 @@ namespace SchoolProject.ViewModels
 
             }
         }
-
-        //login validation
-
     }
 }

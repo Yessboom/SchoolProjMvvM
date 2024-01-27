@@ -18,7 +18,6 @@ namespace SchoolProject.Services
         Task<int> EditTeacher(TeacherModel teacherModel);
         //Delete teacher
         Task<int> DeleteTeacher(TeacherModel teacherModel);
-        //Get user login authentication
 
     }
 }

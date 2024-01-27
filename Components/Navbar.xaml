@@ -92,49 +92,12 @@
             </HorizontalStackLayout>
 
             <!--Funds navigation link-->
-            <HorizontalStackLayout ZIndex="2"
-                                   HorizontalOptions="Start"
-                                   Margin="40,0,0,0">
-                <Image Source="fundsicon.png"
-                       WidthRequest="15" HeightRequest="15"
-                       Margin="0,40,0,0"/>
-                <Label Text="Funds"
-                       TextColor="White"
-                       FontFamily="Roboto-Bold"
-                       FontAttributes="Bold"
-                       FontSize="20"
-                       Margin="15,40,0,0"/>
-                <HorizontalStackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="fundspageroute"/>
-                </HorizontalStackLayout.GestureRecognizers>
-            </HorizontalStackLayout>
+
         </VerticalStackLayout>
         <!--End of navLink container-->
 
         <!--Logout Button-->
-        <VerticalStackLayout VerticalOptions="End" 
-                             Margin="0,0,0,50">
-            <Border 
-                Padding="15"
-                Stroke="Transparent"
-                Background="#FC6923"
-                WidthRequest="280"
-                HorizontalOptions="Start"
-                >
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="0,40,0,40"/>
-                </Border.StrokeShape>
-                <Label 
-                    Text="Log out"                
-                    FontSize="18"
-                    FontFamily="Roboto-Bold"
-                    FontAttributes="Bold"
-                    TextColor="White" />
-            </Border>
-            <VerticalStackLayout.GestureRecognizers>
-                <TapGestureRecognizer Tapped="logoutroute"/>
-            </VerticalStackLayout.GestureRecognizers>
-        </VerticalStackLayout>
+
         <!--End of main container-->
     </Grid>
 </ContentView>
